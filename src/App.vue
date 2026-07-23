@@ -2,8 +2,14 @@
 import { computed, onMounted, ref, watch } from 'vue'
 import { calculateNavlog } from './calculations'
 
+function createId() {
+  if (globalThis.crypto?.randomUUID) return globalThis.crypto.randomUUID()
+  const randomPart = Math.random().toString(36).slice(2, 12)
+  return `leg-${Date.now().toString(36)}-${randomPart}`
+}
+
 const blankLeg = (overrides = {}) => ({
-  id: crypto.randomUUID(),
+  id: createId(),
   checkpoint: '', vorIdent: '', vorFrequency: '', trueCourse: 0, altitude: '3500',
   windDirection: 0, windVelocity: 0, temperature: 15, tas: 110,
   variation: 0, deviation: 0, distance: 0, gph: 9, actualGs: '',
