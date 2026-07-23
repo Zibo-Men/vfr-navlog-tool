@@ -1,0 +1,177 @@
+:root{font-family:Inter,"Segoe UI",Arial,sans-serif;color:#172b3a;background:#f4f1e9;font-synthesis:none;--navy:#102a43;--blue:#176b87;--sky:#e6f2f5;--paper:#fffefa;--line:#c9d2d8;--orange:#d26a3a}
+*{box-sizing:border-box}body{margin:0;min-width:1180px;background:linear-gradient(180deg,#e9f1f2 0,#f4f1e9 370px)}button,input{font:inherit}.app-shell{min-height:100vh}.topbar{height:66px;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 4vw;position:sticky;top:0;z-index:10;box-shadow:0 3px 14px #102a4338}.brand{display:flex;gap:12px;align-items:center;color:#fff;text-decoration:none;font-weight:800;letter-spacing:.12em}.brand-mark{display:grid;place-items:center;border:1px solid #6e96a9;width:32px;height:32px;border-radius:50%;color:#9cd1df}.toolbar{display:flex;gap:8px}.button{border:0;border-radius:6px;padding:10px 15px;font-weight:700;cursor:pointer}.button.ghost{background:transparent;color:#dfeaf0;border:1px solid #49657a}.button.primary{background:#e4713b;color:white}.button.secondary{background:var(--blue);color:#fff}.file-button input{display:none}main{width:min(1680px,94vw);margin:auto}.hero{display:flex;justify-content:space-between;align-items:end;padding:42px 0 30px}.eyebrow{text-transform:uppercase;letter-spacing:.16em;color:#4c7585;font-size:11px;font-weight:800;margin:0 0 8px}.title-input{font-family:Georgia,serif;font-size:38px;font-weight:700;color:var(--navy);border:0;border-bottom:1px solid transparent;background:transparent;width:720px;padding:0}.title-input:focus{outline:0;border-color:#6a8b97}.subtitle{color:#607584;margin:9px 0 0}.status-pill{background:#fff9;border:1px solid #cedadd;padding:8px 12px;border-radius:99px;font-size:12px}.status-pill span{display:inline-block;width:7px;height:7px;background:#3d9771;border-radius:50%;margin-right:6px}.flight-card{display:grid;grid-template-columns:1.2fr .8fr .7fr 2fr;gap:18px;background:var(--paper);border:1px solid #d5d9d3;border-radius:10px;padding:18px 22px;box-shadow:0 8px 28px #3b4c5510}.flight-card label span{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.1em;font-weight:800;color:#65808e;margin-bottom:6px}.flight-card input{width:100%;border:0;border-bottom:1px solid #bcc9ce;background:transparent;padding:6px 2px;color:#1f3544;font-weight:650}.unit-input{display:flex;align-items:center}.unit-input em{font-size:11px;color:#718590}.summary-grid{display:grid;grid-template-columns:repeat(4,1fr);margin:22px 0;gap:1px;background:#cad4d7;border:1px solid #cad4d7;border-radius:9px;overflow:hidden}.summary-grid article{background:#fff;padding:15px 20px}.summary-grid span{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:#6e828b}.summary-grid strong{font-family:Georgia,serif;font-size:25px;color:var(--navy);margin:0 6px 0 14px}.summary-grid em{font-size:10px;color:#6e828b}.summary-grid .warning{background:#fff2ec}.workspace{background:var(--paper);border:1px solid #d4d7d1;border-radius:10px;box-shadow:0 14px 35px #3b4c5512;overflow:hidden}.section-heading{display:flex;justify-content:space-between;align-items:end;padding:22px 24px 17px}.section-heading h2,.formula-note h2{font:700 25px Georgia,serif;color:var(--navy);margin:0}.table-wrap{overflow-x:auto;border-top:1px solid #c6d0d3;border-bottom:1px solid #c6d0d3}.navlog-table{border-collapse:collapse;table-layout:fixed;width:100%;min-width:1630px;font-size:11px}.navlog-table th{background:#dce8eb;color:#244556;border-right:1px solid #b4c4ca;border-bottom:1px solid #aebfc5;padding:8px 5px;text-transform:uppercase;letter-spacing:.045em}.navlog-table .group-row th{background:#173c50;color:#fff}.navlog-table small{font-weight:500;opacity:.78;text-transform:none;letter-spacing:0}.navlog-table td{border-right:1px solid #d5dcde;border-bottom:1px solid #d5dcde;height:58px;padding:4px;text-align:center;background:#fff}.navlog-table input{width:100%;min-width:45px;border:1px solid transparent;border-radius:3px;background:#f8f6ef;padding:7px 5px;text-align:center;color:#1d3340}.navlog-table input:focus{outline:2px solid #66a8bc;background:white}.checkpoint-cell{width:138px}.checkpoint-cell>input{text-align:left;font-weight:700}.checkpoint-cell div,.actual-cell{display:flex;gap:2px;margin-top:2px}.checkpoint-cell div input{min-width:0;font-size:9px}.computed{background:var(--sky)!important;color:#125a71;font-weight:800}.leg-number{width:40px;color:#7a8b92}.drag{cursor:grab;color:#91a1a7;margin-right:2px}.row-actions{width:58px;white-space:nowrap}.row-actions button{border:0;background:transparent;color:#517586;font-size:17px;cursor:pointer}.row-actions button:last-child{color:#b45a42}.table-hint{font-size:11px;color:#70858e;padding:10px 24px 14px;margin:0}.formula-note{margin:24px 0 36px;display:flex;gap:22px;align-items:center;background:#183a4d;color:#d8e6eb;padding:23px 28px;border-radius:9px}.formula-note h2{color:#fff}.formula-note p{margin:7px 0;max-width:1100px;font-size:13px;line-height:1.55}.formula-note .eyebrow{color:#9dc4d0}.compass{width:70px;height:70px;flex:0 0 70px;border:1px solid #7293a0;border-radius:50%;display:grid;place-items:center;font-family:Georgia,serif;font-weight:700;position:relative}.compass span{position:absolute;font-size:26px;color:#e07847;transform:translate(9px,-2px)}footer{text-align:center;background:#0d2536;color:#87a1af;padding:22px;font-size:10px;letter-spacing:.08em}
+@media(max-width:900px){body{min-width:0}.topbar{position:static}.toolbar .ghost{display:none}main{width:96vw}.hero{padding:26px 0 20px}.title-input{width:100%;font-size:30px}.flight-card{grid-template-columns:1fr 1fr}.notes-field{grid-column:1/-1}.summary-grid{grid-template-columns:1fr 1fr}.summary-grid strong{display:block;margin:4px 0}.table-wrap{overflow:auto}.status-pill{display:none}}
+@media print{@page{size:landscape;margin:7mm}body{background:#fff;min-width:0}.topbar,.summary-grid,.section-heading .button,.table-hint,.formula-note,footer,.status-pill{display:none!important}main{width:100%}.hero{padding:0 0 7px}.hero .eyebrow,.hero .subtitle{display:none}.title-input{font-size:22px}.flight-card{box-shadow:none;padding:8px;border-color:#777;margin-bottom:8px}.workspace{box-shadow:none;border:0}.section-heading{padding:5px 0}.section-heading h2{font-size:16px}.table-wrap{overflow:visible;border:0}.navlog-table{min-width:0;width:100%;font-size:6.5px}.navlog-table th{padding:3px 1px}.navlog-table td{height:28px;padding:1px}.navlog-table input{font-size:6.5px;padding:2px 1px;background:transparent}.row-actions,.actions-col,.drag{display:none}.checkpoint-cell{width:auto}.computed{background:#e7f1f3!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}.group-row th{-webkit-print-color-adjust:exact;print-color-adjust:exact}tr{break-inside:avoid}}
+
+/* Leg-first layout: every row explicitly describes one FROM → TO segment. */
+.navlog-table{width:1840px;min-width:100%}
+.navlog-table col.col-number{width:48px}.navlog-table col.col-route{width:238px}.navlog-table col.col-course{width:72px}.navlog-table col.col-altitude{width:76px}.navlog-table col.col-small{width:66px}.navlog-table col.col-heading{width:70px}.navlog-table col.col-ch{width:78px}.navlog-table col.col-path{width:70px}.navlog-table col.col-time{width:76px}.navlog-table col.col-actual{width:92px}.navlog-table col.col-fuel{width:67px}.navlog-table col.col-actions{width:62px}
+.navlog-table th{padding:8px 4px;letter-spacing:.035em;overflow-wrap:anywhere;line-height:1.2}
+.navlog-table td{height:112px;vertical-align:middle}
+.navlog-table input,.navlog-table textarea{width:100%;min-width:0;border:1px solid transparent;border-radius:3px;background:#f8f6ef;padding:7px 5px;text-align:center;color:#1d3340;font:inherit}
+.navlog-table input:focus,.navlog-table textarea:focus{outline:2px solid #66a8bc;background:#fff}
+.route-cell{padding:7px 8px!important;text-align:left!important}
+.route-cell label{display:grid;grid-template-columns:38px 1fr;gap:5px;align-items:center}
+.route-cell label>span{font-size:8px;font-weight:900;letter-spacing:.12em;color:#5b7a88}
+.route-cell textarea{resize:vertical;min-height:36px;max-height:72px;text-align:left;font-weight:750;line-height:1.2;overflow-wrap:anywhere;white-space:pre-wrap}
+.route-arrow{height:13px;margin-left:16px;color:#2a7891;font-size:13px;font-weight:900;line-height:13px}
+.vor-fields{display:grid;grid-template-columns:1fr .75fr;gap:4px;margin:5px 0 0 43px}
+.vor-fields input{font-size:9px;padding:4px}
+.ch-heading{background:#d56e3d!important;color:#fff!important}
+.ch-cell{background:#fff0e7!important;color:#9d3f1f!important;font-size:13px;box-shadow:inset 0 0 0 2px #d56e3d}
+.leg-number span{display:block;margin-top:5px;font-weight:800}
+.drag{display:grid;place-items:center;width:30px;height:30px;margin:auto;border:1px solid #cad5d9;border-radius:5px;background:#f5f8f8;color:#587584;cursor:grab;font-size:16px;line-height:1}
+.drag:active{cursor:grabbing}.drag-target:hover td{border-top:2px solid #2d8199}
+.actual-cell{display:table-cell;margin:0}.actual-cell span{display:block;height:38px;margin:0 7px;border-bottom:1px solid #79909a}
+
+@media print{
+  @page{size:landscape;margin:6mm}
+  .navlog-table{min-width:0;width:100%;font-size:6px}
+  .navlog-table td{height:56px;padding:1px}
+  .navlog-table input,.navlog-table textarea{font-size:6px;padding:2px 1px;background:transparent;resize:none}
+  .route-cell{padding:2px 3px!important}.route-cell label{grid-template-columns:22px 1fr;gap:2px}.route-cell textarea{min-height:20px;max-height:25px}
+  .route-arrow{height:7px;line-height:7px;margin-left:10px;font-size:8px}.vor-fields{margin:1px 0 0 24px;gap:2px}
+  .actual-cell span{height:22px}.ch-cell{background:#fff0e7!important;box-shadow:inset 0 0 0 1px #d56e3d}
+  .ch-heading{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+
+/* Single-entry waypoint bands with leg data placed between them. */
+input[type="number"]{-moz-appearance:textfield}
+input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
+.title-input::placeholder{color:#8ca0a9;font-style:italic;font-weight:500}
+.navlog-table{width:1774px}
+.waypoint-row td{height:64px;background:#f7faf9;border-bottom:1px solid #91a8b1}
+.waypoint-marker{padding:4px!important}
+.waypoint-marker span{display:block;background:#1f6178;color:#fff;border-radius:4px;padding:5px 2px;font-size:8px;font-weight:900;letter-spacing:.06em}
+.waypoint-cell{padding:6px 8px!important;text-align:left!important}
+.waypoint-cell textarea{min-height:31px;max-height:58px;resize:vertical;text-align:left;font-weight:800;line-height:1.15;overflow-wrap:anywhere}
+.waypoint-cell .vor-fields{margin:3px 0 0;grid-template-columns:1fr .75fr}
+.waypoint-continuation{position:relative;background:#f7faf9!important}
+.waypoint-continuation span{position:absolute;left:0;right:0;top:50%;border-top:1px dashed #bfd0d5}
+.leg-data-row td{height:68px}
+.leg-route-cell{padding:5px 8px!important;background:#edf4f5!important;text-align:left!important;line-height:1.15}
+.leg-route-cell strong{display:block;overflow-wrap:anywhere;font-size:9px;color:#244c5e}
+.leg-route-cell span{display:block;color:#d56e3d;font-weight:900;margin:2px 0}
+.leg-number span{font-size:8px;letter-spacing:.04em}
+.copy-field{position:relative;display:flex;align-items:center}
+.copy-field input{padding-right:25px}
+.copy-field button{position:absolute;right:3px;width:20px;height:23px;padding:0;border:1px solid #afc3ca;border-radius:3px;background:#e6f0f2;color:#176b87;font-size:12px;font-weight:900;cursor:pointer}
+.copy-field button:hover{background:#cfe4e9}
+
+@media print{
+  .waypoint-row td{height:31px}.waypoint-marker span{padding:3px 1px;font-size:5px}
+  .waypoint-cell{padding:2px 3px!important}.waypoint-cell textarea{min-height:15px;max-height:17px}
+  .waypoint-cell .vor-fields{margin:1px 0 0}.leg-data-row td{height:34px}
+  .leg-route-cell{padding:2px 3px!important}.leg-route-cell strong{font-size:5.5px}
+  .copy-field button{display:none}.copy-field input{padding-right:1px}
+}
+
+/* Compact route chain: one waypoint column + one leg column. */
+.navlog-table{width:1815px}
+.navlog-table col.col-waypoint{width:220px}.navlog-table col.col-leg{width:150px}
+.leg-data-row td{height:78px}
+.waypoint-cell{background:#f7faf9!important;border-right:2px solid #7da0ad!important}
+.waypoint-cell textarea{min-height:36px;max-height:48px}
+.leg-cell{padding:6px!important;background:#edf4f5!important;text-align:left!important}
+.leg-cell>div{display:flex;align-items:center;gap:7px}
+.leg-cell .drag{flex:0 0 28px;width:28px;height:28px;margin:0}
+.leg-cell strong{font-size:9px;letter-spacing:.05em;color:#244c5e}
+.leg-cell>span{display:block;margin-top:5px;color:#597885;font-size:9px;font-weight:700;line-height:1.2;overflow-wrap:anywhere}
+.final-waypoint-row td{height:62px;background:#f7faf9;border-top:2px solid #7da0ad;border-bottom:2px solid #7da0ad}
+.final-waypoint-row .waypoint-cell{padding:6px 8px!important}
+.arrival-cell{background:#173c50!important;color:#fff!important;font-size:9px;font-weight:900;letter-spacing:.08em}
+
+@media print{
+  .leg-data-row td{height:39px}.waypoint-cell textarea{min-height:18px;max-height:21px}
+  .leg-cell{padding:2px!important}.leg-cell strong,.leg-cell>span{font-size:5.5px}.leg-cell>span{margin-top:2px}
+  .final-waypoint-row td{height:30px}.arrival-cell{font-size:5.5px}
+}
+
+/* Denser data typography and waypoint-first drag interaction. */
+.navlog-table td{font-size:12px}
+.navlog-table input{font-size:13px;font-weight:700;padding:5px 4px}
+.leg-data-row td{height:62px}
+.waypoint-cell{position:relative;padding:5px 7px 5px 42px!important}
+.waypoint-cell textarea{min-height:31px;max-height:42px;font-size:11px;padding:5px}
+.waypoint-cell .vor-fields{margin-top:2px}
+.waypoint-cell .vor-fields input{font-size:9px;padding:3px}
+.waypoint-drag{position:absolute;left:7px;top:50%;transform:translateY(-50%);display:grid;place-items:center;width:27px;height:31px;padding:0;border:1px solid #adc2c9;border-radius:5px;background:#e8f0f2;color:#456c7b;cursor:grab;font-size:15px;transition:transform .18s ease,background .18s ease,box-shadow .18s ease}
+.waypoint-drag:hover{background:#d4e6ea;box-shadow:0 3px 8px #365c6b22;transform:translateY(-50%) scale(1.06)}.waypoint-drag:active{cursor:grabbing}
+.leg-cell{text-align:center!important;padding:5px!important}
+.leg-cell strong{display:block;font-size:9.5px;line-height:1.15;color:#244c5e;overflow-wrap:anywhere}
+.leg-cell>span{display:block;margin:2px 0;color:#d56e3d;font-size:13px;font-weight:900;line-height:1}
+.leg-data-row td,.final-waypoint-row td{transition:opacity .18s ease,background-color .18s ease,box-shadow .18s ease,transform .18s ease}
+.waypoint-dragging td{opacity:.42;transform:scale(.992);background:#d9e6e9!important}
+.waypoint-drop-target td{box-shadow:inset 0 3px 0 #df6f39;background-color:#fff8f2!important;animation:drop-target-pulse .75s ease-in-out infinite alternate}
+@keyframes drop-target-pulse{from{box-shadow:inset 0 3px 0 #df6f39}to{box-shadow:inset 0 5px 0 #df6f39,0 -3px 10px #df6f3922}}
+
+/* Dedicated paper layout: full-width A4 landscape with repeating table headers. */
+@media print{
+  @page{size:A4 landscape;margin:5mm}
+  html,body{width:auto!important;min-width:0!important;background:#fff}
+  .topbar,.summary-grid,.section-heading .button,.table-hint,.formula-note,footer,.status-pill{display:none!important}
+  main{width:100%!important;max-width:none!important;margin:0!important}
+  .hero{display:block;padding:0 0 2mm!important}
+  .hero>div:first-child{display:flex;align-items:baseline;gap:4mm}
+  .hero .eyebrow,.hero .subtitle{display:none!important}
+  .title-input{width:100%!important;font-size:14pt!important;line-height:1.05;padding:0!important}
+  .flight-card{display:grid!important;grid-template-columns:1.1fr .7fr .7fr 2.5fr;gap:2mm;padding:2mm 3mm!important;margin:0 0 2mm!important;border:1px solid #7f8e94;border-radius:0;box-shadow:none}
+  .flight-card .notes-field{grid-column:auto!important}
+  .flight-card label span{font-size:5.5pt!important;margin-bottom:.5mm}.flight-card input{font-size:7pt!important;padding:.5mm 0!important}
+  .workspace{border:0!important;border-radius:0!important;box-shadow:none!important;overflow:visible!important;break-inside:auto}
+  .workspace.print-page-break{break-before:page}
+  .section-heading{display:block;padding:0 0 1mm!important}.section-heading .eyebrow{display:none}.section-heading h2{font-size:11pt!important}
+  .table-wrap{overflow:visible!important;border:0!important}
+  .navlog-table{width:100%!important;min-width:0!important;table-layout:fixed;font-size:6.5pt!important}
+  .navlog-table col{width:3.95%!important}.navlog-table col.col-waypoint{width:12%!important}.navlog-table col.col-leg{width:9%!important}.navlog-table col.col-actual{width:5%!important}.navlog-table col.col-actions{display:none!important;width:0!important}
+  .navlog-table thead{display:table-header-group}.navlog-table tbody{display:table-row-group}
+  .navlog-table th{font-size:5.7pt!important;line-height:1.05;padding:1.2mm .4mm!important;overflow:hidden}
+  .navlog-table small{font-size:4.5pt!important}
+  .navlog-table tr{break-inside:avoid;page-break-inside:avoid}
+  .navlog-table td{font-size:7.2pt!important;height:8mm!important;padding:.5mm!important}
+  .navlog-table input,.navlog-table textarea{font-size:7.2pt!important;line-height:1.05;padding:.5mm!important;background:transparent!important;font-weight:700}
+  .waypoint-cell{padding:.5mm .6mm .5mm 6mm!important}.waypoint-cell textarea{min-height:3.8mm!important;max-height:5mm!important;font-size:6.7pt!important}
+  .waypoint-cell .vor-fields{margin:.2mm 0 0!important}.waypoint-cell .vor-fields input{font-size:4.8pt!important;padding:.2mm!important}
+  .waypoint-drag,.copy-field button{display:none!important}
+  .leg-cell{padding:.4mm!important}.leg-cell strong{font-size:5.3pt!important}.leg-cell>span{font-size:7pt!important;margin:.2mm 0!important}
+  .actual-cell span{height:4mm!important;margin:0 .5mm!important}
+  .ch-cell{font-size:8pt!important;box-shadow:inset 0 0 0 .35mm #d56e3d}
+  .row-actions,.actions-col{display:none!important}
+  .final-waypoint-row td{height:7mm!important}
+  .waypoint-dragging td,.waypoint-drop-target td{opacity:1;transform:none;animation:none}
+}
+
+/* Fixed two-line waypoint fields and a dedicated three-line notes editor. */
+.notes-field{grid-column:1/-1}.notes-field textarea{width:100%;height:70px;resize:none;overflow:auto;border:1px solid #bcc9ce;border-radius:4px;background:#fbfaf5;padding:8px;color:#1f3544;font:650 13px/18px Inter,"Segoe UI",Arial,sans-serif}
+.notes-field textarea:focus{outline:2px solid #66a8bc;background:#fff}.print-notes{display:none}
+.waypoint-cell textarea{display:block;height:40px!important;min-height:40px!important;max-height:40px!important;resize:none!important;overflow:hidden!important;line-height:16px!important;padding:11px 5px!important;white-space:pre-wrap}
+.waypoint-cell textarea.multiline{padding:3px 5px!important}
+.final-waypoint-row .waypoint-cell{padding:5px 7px 5px 42px!important}
+
+@media print{
+  .flight-card{grid-template-columns:repeat(3,minmax(0,1fr))!important;align-items:end}
+  .flight-card label{display:flex;min-width:0;flex-direction:column;justify-content:flex-end}
+  .flight-card label>span{font-size:6.2pt!important;white-space:nowrap}
+  .flight-card .notes-field{display:none!important}
+  .print-notes{display:block;grid-column:1/-1;border-top:1px solid #888;padding-top:1mm;margin-top:.6mm}
+  .print-notes span{display:block;font-size:5.5pt;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#333}
+  .print-notes p{margin:.5mm 0 0;font-size:7pt;line-height:1.25;white-space:pre-wrap;color:#111}
+  .unit-input{display:grid!important;grid-template-columns:1fr auto;align-items:end;gap:1mm}
+  .unit-input input{width:100%}.unit-input em{align-self:end;padding-bottom:.5mm;font-size:6pt;line-height:1;color:#222}
+  .waypoint-cell textarea{height:6mm!important;min-height:6mm!important;max-height:6mm!important;line-height:2.6mm!important;padding:1.7mm .5mm!important;overflow:hidden!important;resize:none!important}
+  .waypoint-cell textarea.multiline{padding:.35mm .5mm!important}
+  .final-waypoint-row .waypoint-cell{padding:.5mm .6mm .5mm 6mm!important}
+
+  /* Monochrome print palette: hierarchy through weight, borders, and gray values. */
+  .navlog-table .group-row th{background:#242424!important;color:#fff!important;border-color:#000!important}
+  .navlog-table thead tr:nth-child(2) th{background:#d8d8d8!important;color:#111!important;border-color:#777!important}
+  .navlog-table td{color:#111!important;border-color:#a6a6a6!important}
+  .waypoint-cell,.leg-cell,.final-waypoint-row td{background:#fff!important}
+  .computed{background:#ededed!important;color:#000!important}
+  .ch-heading{background:#555!important;color:#fff!important}
+  .ch-cell{background:#d7d7d7!important;color:#000!important;font-weight:900!important;box-shadow:inset 0 0 0 .45mm #111!important}
+  .leg-cell>span{color:#000!important}.leg-cell strong{color:#111!important}
+  .arrival-cell{background:#333!important;color:#fff!important}
+  .actual-cell span{border-color:#222!important}
+  .flight-card,.print-notes{border-color:#777!important}.flight-card span,.flight-card input{color:#111!important}
+}

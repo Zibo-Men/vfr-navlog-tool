@@ -1,0 +1,8 @@
+.git
+.gitignore
+.agents
+.artifact-work
+dist
+node_modules
+tmp
+*.log

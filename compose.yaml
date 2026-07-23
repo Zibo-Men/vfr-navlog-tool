@@ -1,0 +1,9 @@
+services:
+  vfr-navlog:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: vfr-navlog
+    restart: unless-stopped
+    ports:
+      - "${VFR_NAVLOG_PORT:-8090}:80"
