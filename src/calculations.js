@@ -1,5 +1,13 @@
 export const normalizeHeading = (value) => ((Number(value) % 360) + 360) % 360
 
+export function hasFuelFlow(value) {
+  return value !== '' && value !== null && value !== undefined && Number.isFinite(Number(value))
+}
+
+export function calculateFuelRequired(tripFuel, additionalFuel = 0) {
+  return Math.max(0, Number(tripFuel) || 0) + Math.max(0, Number(additionalFuel) || 0)
+}
+
 export function calculateLeg(leg, startingFuel = 0) {
   const course = Number(leg.trueCourse) || 0
   const windFrom = Number(leg.windDirection) || 0
@@ -8,6 +16,7 @@ export function calculateLeg(leg, startingFuel = 0) {
   const distance = Math.max(0, Number(leg.distance) || 0)
   const variation = Number(leg.variation) || 0
   const deviation = Number(leg.deviation) || 0
+  const gphIsProvided = hasFuelFlow(leg.gph)
   const gph = Math.max(0, Number(leg.gph) || 0)
 
   const relativeWind = (windFrom - course) * Math.PI / 180
@@ -20,7 +29,9 @@ export function calculateLeg(leg, startingFuel = 0) {
     : 0
   const safeGs = groundSpeed > 0 ? groundSpeed : 0
   const eteMinutes = safeGs > 0 ? distance / safeGs * 60 : 0
-  const fuelUsed = eteMinutes / 60 * gph
+  const fuelUsed = gphIsProvided
+    ? eteMinutes / 60 * gph
+    : Math.max(0, Number(leg.manualFuelUsed) || 0)
 
   return {
     ...leg,
@@ -31,6 +42,7 @@ export function calculateLeg(leg, startingFuel = 0) {
     groundSpeed: safeGs,
     eteMinutes,
     fuelUsed,
+    fuelUsedIsManual: !gphIsProvided,
     fuelRemaining: Math.max(0, Number(startingFuel) - fuelUsed),
     warning: tas > 0 && !solvable ? 'Crosswind exceeds TAS' : safeGs <= 0 && distance > 0 ? 'No positive ground speed' : '',
   }

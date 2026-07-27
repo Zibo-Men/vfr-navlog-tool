@@ -52,6 +52,8 @@ machine reboot when the Docker service starts.
 - Edit tan cells; blue cells recalculate immediately.
 - Wind direction is entered as the direction the wind is **from**.
 - Magnetic variation and compass deviation use east-positive (`+`) and west-negative (`−`) signs.
+- Enter a leg's GPH to calculate fuel from flight time, or leave GPH blank and enter the fixed POH value directly in Used.
+- Enter taxi fuel, §91.151 reserves, and 5% contingency together in the Arrival row's Extra field; Fuel required adds this to trip fuel.
 - Drag a leg by its `⠿` handle to reorder it.
 - Data auto-saves to this browser. “Save JSON” creates a portable backup; “Open” restores one.
 - Use “Print / PDF” and choose **Microsoft Print to PDF** to create a landscape PDF.

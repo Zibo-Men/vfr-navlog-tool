@@ -175,3 +175,28 @@ input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-ou
   .actual-cell span{border-color:#222!important}
   .flight-card,.print-notes{border-color:#777!important}.flight-card span,.flight-card input{color:#111!important}
 }
+
+/* Fuel entry modes and vector icons. */
+.brand-mark svg{display:block;width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linejoin:round}
+.brand-mark svg circle{fill:currentColor;stroke:none}
+.manual-fuel-cell{background:#fff8e8!important}
+.manual-fuel-cell input,.arrival-fuel-input input{background:#fff4d6;border-color:#dfc47b;font-weight:850}
+.arrival-fuel-help{text-align:right!important;padding-right:10px!important;color:#58717d;font-size:9px;font-weight:750;letter-spacing:.02em}
+.arrival-fuel-label{background:#dce8eb!important;color:#244556!important;font-size:8px!important;font-weight:900;line-height:1.15}
+.arrival-required{background:var(--sky)!important;color:#125a71!important;font-weight:900}
+.arrival-required::before{content:"REQ.";display:block;font-size:7px;letter-spacing:.05em;color:#567986}
+.compass{border:0}
+.compass svg{display:block;width:70px;height:70px;fill:none;stroke:#7293a0;stroke-width:1.2}
+.compass .compass-tick{stroke-width:1.7}
+.compass .compass-needle{fill:#e07847;stroke:#e07847;stroke-linejoin:round}
+.compass svg circle:last-child{fill:#d8e6eb;stroke:none}
+.compass span{top:8px;left:50%;transform:translateX(-50%);font:700 8px/1 Inter,"Segoe UI",Arial,sans-serif;color:#fff}
+
+@media print{
+  .manual-fuel-cell,.arrival-fuel-input{background:#fff!important}
+  .manual-fuel-cell input,.arrival-fuel-input input{background:transparent!important;border-color:transparent!important}
+  .arrival-fuel-help{font-size:4.8pt!important;color:#222!important}
+  .arrival-fuel-label{background:#d8d8d8!important;color:#111!important;font-size:5pt!important}
+  .arrival-required{background:#ededed!important;color:#000!important}
+  .arrival-required::before{font-size:4.5pt;color:#333}
+}

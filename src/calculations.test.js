@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { calculateLeg, calculateNavlog, normalizeHeading } from './calculations'
+import { calculateFuelRequired, calculateLeg, calculateNavlog, hasFuelFlow, normalizeHeading } from './calculations'
 
 describe('VFR navlog calculations', () => {
   it('normalizes headings', () => {
@@ -28,5 +28,30 @@ describe('VFR navlog calculations', () => {
     ], 30, '10:00')
     expect(results[1].fuelRemaining).toBeCloseTo(18)
     expect(results[1].eta).toBe('11:00')
+  })
+
+  it('uses a fixed POH fuel value when GPH is blank', () => {
+    const result = calculateLeg({
+      trueCourse: 0,
+      tas: 120,
+      distance: 60,
+      gph: '',
+      manualFuelUsed: 2.4,
+    }, 20)
+
+    expect(result.eteMinutes).toBeCloseTo(30)
+    expect(result.fuelUsed).toBeCloseTo(2.4)
+    expect(result.fuelRemaining).toBeCloseTo(17.6)
+    expect(result.fuelUsedIsManual).toBe(true)
+  })
+
+  it('treats zero as an entered GPH value instead of switching to manual fuel', () => {
+    expect(hasFuelFlow(0)).toBe(true)
+    expect(hasFuelFlow('')).toBe(false)
+    expect(calculateLeg({ tas: 100, distance: 50, gph: 0, manualFuelUsed: 3 }, 20).fuelUsed).toBe(0)
+  })
+
+  it('adds arrival fuel to trip fuel for total fuel required', () => {
+    expect(calculateFuelRequired(12.5, 6.2)).toBeCloseTo(18.7)
   })
 })

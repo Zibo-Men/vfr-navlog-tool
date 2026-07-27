@@ -1,6 +1,6 @@
 <script setup>
 import { computed, onMounted, ref, watch } from 'vue'
-import { calculateNavlog } from './calculations'
+import { calculateFuelRequired, calculateNavlog } from './calculations'
 
 function createId() {
   if (globalThis.crypto?.randomUUID) return globalThis.crypto.randomUUID()
@@ -12,7 +12,7 @@ const blankLeg = (overrides = {}) => ({
   id: createId(),
   checkpoint: '', vorIdent: '', vorFrequency: '', trueCourse: 0, altitude: '3500',
   windDirection: 0, windVelocity: 0, temperature: 15, tas: 110,
-  variation: 0, deviation: 0, distance: 0, gph: 9, actualGs: '',
+  variation: 0, deviation: 0, distance: 0, gph: 9, manualFuelUsed: '', actualGs: '',
   ...overrides,
 })
 
@@ -22,6 +22,7 @@ const defaults = {
   notes: '',
   departureTime: '09:00',
   startingFuel: 30,
+  additionalFuel: '',
   origin: { checkpoint: 'Departure Airport', vorIdent: '', vorFrequency: '' },
   legs: [
     blankLeg({ checkpoint: 'Lake Checkpoint', trueCourse: 72, altitude: '3500', windDirection: 310, windVelocity: 12, temperature: 18, distance: 22 }),
@@ -34,7 +35,8 @@ const state = ref(saved ? JSON.parse(saved) : defaults)
 const calculated = computed(() => calculateNavlog(state.value.legs, state.value.startingFuel, state.value.departureTime))
 const totalDistance = computed(() => calculated.value.reduce((sum, leg) => sum + Number(leg.distance || 0), 0))
 const totalMinutes = computed(() => calculated.value.reduce((sum, leg) => sum + leg.eteMinutes, 0))
-const totalFuel = computed(() => calculated.value.reduce((sum, leg) => sum + leg.fuelUsed, 0))
+const tripFuel = computed(() => calculated.value.reduce((sum, leg) => sum + leg.fuelUsed, 0))
+const totalFuel = computed(() => calculateFuelRequired(tripFuel.value, state.value.additionalFuel))
 const lastFuel = computed(() => calculated.value.at(-1)?.fuelRemaining ?? state.value.startingFuel)
 const draggedWaypointIndex = ref(null)
 const dragOverWaypointIndex = ref(null)
@@ -142,7 +144,12 @@ const duration = (minutes) => `${Math.floor(minutes / 60)}:${String(Math.round(m
   <div class="app-shell">
     <header class="topbar">
       <a class="brand" href="#top" aria-label="VFR Navlog home">
-        <span class="brand-mark">✦</span>
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32">
+            <path d="M16 5.5 18.6 13l7.9 3-7.9 3L16 26.5 13.4 19l-7.9-3 7.9-3L16 5.5Z"/>
+            <circle cx="16" cy="16" r="2.2"/>
+          </svg>
+        </span>
         <span>VFR NAVLOG</span>
       </a>
       <nav class="toolbar" aria-label="Navlog actions">
@@ -203,7 +210,7 @@ const duration = (minutes) => `${Math.floor(minutes / 60)}:${String(Math.round(m
                 <th>Wind<br><small>from °</small></th><th>Wind<br><small>kt</small></th><th>Temp<br><small>°C</small></th>
                 <th>WCA</th><th>TH</th><th>Var.<br><small>E+ / W−</small></th>
                 <th>MH</th><th>Dev.<br><small>E+ / W−</small></th><th class="ch-heading">CH<br><small>Fly this</small></th><th>Dist.<br><small>NM</small></th><th>GS<br><small>kt</small></th>
-                <th>ETE</th><th>ETA</th><th>Actual</th><th>GPH</th><th>Used</th><th>Rem.</th>
+                <th>ETE</th><th>ETA</th><th>Actual</th><th>GPH<br><small>optional</small></th><th>Used</th><th>Rem.</th>
               </tr>
             </thead>
             <tbody>
@@ -239,7 +246,13 @@ const duration = (minutes) => `${Math.floor(minutes / 60)}:${String(Math.round(m
                 <td><input v-model.number="state.legs[index].deviation" type="text" inputmode="decimal"></td><td class="computed ch-cell">{{ angle(leg.compassHeading) }}</td><td><input v-model.number="state.legs[index].distance" type="text" inputmode="decimal"></td>
                 <td class="computed">{{ fmt(leg.groundSpeed) }}</td><td class="computed">{{ duration(leg.eteMinutes) }}</td><td class="computed">{{ leg.eta || '—' }}</td>
                 <td class="actual-cell"><span aria-label="Blank space for handwritten actual time"></span></td>
-                <td><input v-model.number="state.legs[index].gph" type="text" inputmode="decimal"></td><td class="computed">{{ fmt(leg.fuelUsed, 1) }}</td><td class="computed">{{ fmt(leg.fuelRemaining, 1) }}</td>
+                <td><input v-model.number="state.legs[index].gph" type="text" inputmode="decimal" placeholder="—" :aria-label="`Leg ${index + 1} fuel flow in GPH (optional)`"></td>
+                <td :class="{ computed: !leg.fuelUsedIsManual, 'manual-fuel-cell': leg.fuelUsedIsManual }">
+                  <input v-if="leg.fuelUsedIsManual" v-model.number="state.legs[index].manualFuelUsed" type="text" inputmode="decimal"
+                    placeholder="Enter" :aria-label="`Leg ${index + 1} fixed fuel used`">
+                  <template v-else>{{ fmt(leg.fuelUsed, 1) }}</template>
+                </td>
+                <td class="computed">{{ fmt(leg.fuelRemaining, 1) }}</td>
                 <td class="row-actions"><button title="Insert leg after" @click="addLeg(index)">＋</button><button title="Remove leg" @click="removeLeg(index)">×</button></td>
               </tr>
               </template>
@@ -253,7 +266,11 @@ const duration = (minutes) => `${Math.floor(minutes / 60)}:${String(Math.round(m
                   <div class="vor-fields"><input v-model="state.legs[state.legs.length - 1].vorIdent" placeholder="VOR ident"><input v-model="state.legs[state.legs.length - 1].vorFrequency" placeholder="Freq."></div>
                 </td>
                 <td class="arrival-cell">ARRIVAL</td>
-                <td colspan="21"></td>
+                <td colspan="17" class="arrival-fuel-help">Taxi + §91.151 reserves + 5% contingency</td>
+                <td class="arrival-fuel-label">EXTRA<br><small>GAL</small></td>
+                <td class="arrival-fuel-input"><input v-model.number="state.additionalFuel" type="text" inputmode="decimal" placeholder="0.0" aria-label="Additional fuel for taxi, reserves, and contingency"></td>
+                <td class="arrival-required" :title="`Trip ${fmt(tripFuel, 1)} + extra ${fmt(state.additionalFuel || 0, 1)}`">{{ fmt(totalFuel, 1) }}</td>
+                <td class="row-actions"></td>
               </tr>
             </tbody>
           </table>
@@ -262,7 +279,15 @@ const duration = (minutes) => `${Math.floor(minutes / 60)}:${String(Math.round(m
       </section>
 
       <section class="formula-note">
-        <div class="compass">N<span>↗</span></div>
+        <div class="compass" aria-hidden="true">
+          <svg viewBox="0 0 72 72">
+            <circle cx="36" cy="36" r="31"/>
+            <path class="compass-tick" d="M36 8v7M64 36h-7M36 64v-7M8 36h7"/>
+            <path class="compass-needle" d="m36 17 6 22-6-3-6 3 6-22Z"/>
+            <circle cx="36" cy="36" r="2.5"/>
+          </svg>
+          <span>N</span>
+        </div>
         <div><p class="eyebrow">Calculation chain</p><h2>From course to compass</h2>
           <p><strong>True Course + WCA = True Heading</strong> → add magnetic variation → Magnetic Heading → add compass deviation → Compass Heading.</p>
           <p>Wind triangle calculations treat the entered wind direction as the direction the wind is <em>from</em>. Always verify performance and weather data against current approved sources before flight.</p>
