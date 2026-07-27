@@ -1,6 +1,13 @@
 <script setup>
-import { computed, onMounted, ref, watch } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { calculateFuelRemaining, calculateFuelRequired, calculateNavlog } from './calculations'
+import WeightBalance from './WeightBalance.vue'
+
+const currentPage = ref(globalThis.location.hash === '#weight-balance' ? 'weight-balance' : 'navlog')
+const updatePageFromHash = () => {
+  currentPage.value = globalThis.location.hash === '#weight-balance' ? 'weight-balance' : 'navlog'
+  globalThis.scrollTo?.(0, 0)
+}
 
 function createId() {
   if (globalThis.crypto?.randomUUID) return globalThis.crypto.randomUUID()
@@ -42,7 +49,11 @@ const draggedWaypointIndex = ref(null)
 const dragOverWaypointIndex = ref(null)
 
 watch(state, (value) => localStorage.setItem('vfr-navlog-v3', JSON.stringify(value)), { deep: true })
-onMounted(() => document.documentElement.lang = 'en')
+onMounted(() => {
+  document.documentElement.lang = 'en'
+  globalThis.addEventListener('hashchange', updatePageFromHash)
+})
+onBeforeUnmount(() => globalThis.removeEventListener('hashchange', updatePageFromHash))
 
 function addLeg(index = state.value.legs.length - 1) {
   const previous = state.value.legs[index] || {}
@@ -141,7 +152,8 @@ const duration = (minutes) => `${Math.floor(minutes / 60)}:${String(Math.round(m
 </script>
 
 <template>
-  <div class="app-shell">
+  <WeightBalance v-if="currentPage === 'weight-balance'" />
+  <div v-else class="app-shell">
     <header class="topbar">
       <a class="brand" href="#top" aria-label="VFR Navlog home">
         <span class="brand-mark" aria-hidden="true">
@@ -153,6 +165,7 @@ const duration = (minutes) => `${Math.floor(minutes / 60)}:${String(Math.round(m
         <span>VFR NAVLOG</span>
       </a>
       <nav class="toolbar" aria-label="Navlog actions">
+        <a class="button ghost wb-nav-button" href="#weight-balance">Weight &amp; Balance</a>
         <button class="button ghost" @click="resetNavlog">New</button>
         <label class="button ghost file-button">Open<input type="file" accept=".json" @change="importJson"></label>
         <button class="button ghost" @click="exportJson">Save JSON</button>
