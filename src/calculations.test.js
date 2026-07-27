@@ -1,5 +1,12 @@
 import { describe, expect, it } from 'vitest'
-import { calculateFuelRequired, calculateLeg, calculateNavlog, hasFuelFlow, normalizeHeading } from './calculations'
+import {
+  calculateFuelRemaining,
+  calculateFuelRequired,
+  calculateLeg,
+  calculateNavlog,
+  hasFuelFlow,
+  normalizeHeading,
+} from './calculations'
 
 describe('VFR navlog calculations', () => {
   it('normalizes headings', () => {
@@ -53,5 +60,10 @@ describe('VFR navlog calculations', () => {
 
   it('adds arrival fuel to trip fuel for total fuel required', () => {
     expect(calculateFuelRequired(12.5, 6.2)).toBeCloseTo(18.7)
+  })
+
+  it('subtracts all required fuel from starting fuel for the summary remaining value', () => {
+    expect(calculateFuelRemaining(30, calculateFuelRequired(12.5, 6.2))).toBeCloseTo(11.3)
+    expect(calculateFuelRemaining(10, 12)).toBe(0)
   })
 })

@@ -8,6 +8,10 @@ export function calculateFuelRequired(tripFuel, additionalFuel = 0) {
   return Math.max(0, Number(tripFuel) || 0) + Math.max(0, Number(additionalFuel) || 0)
 }
 
+export function calculateFuelRemaining(startingFuel, fuelRequired) {
+  return Math.max(0, (Number(startingFuel) || 0) - (Number(fuelRequired) || 0))
+}
+
 export function calculateLeg(leg, startingFuel = 0) {
   const course = Number(leg.trueCourse) || 0
   const windFrom = Number(leg.windDirection) || 0

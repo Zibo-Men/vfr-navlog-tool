@@ -1,6 +1,6 @@
 <script setup>
 import { computed, onMounted, ref, watch } from 'vue'
-import { calculateFuelRequired, calculateNavlog } from './calculations'
+import { calculateFuelRemaining, calculateFuelRequired, calculateNavlog } from './calculations'
 
 function createId() {
   if (globalThis.crypto?.randomUUID) return globalThis.crypto.randomUUID()
@@ -37,7 +37,7 @@ const totalDistance = computed(() => calculated.value.reduce((sum, leg) => sum +
 const totalMinutes = computed(() => calculated.value.reduce((sum, leg) => sum + leg.eteMinutes, 0))
 const tripFuel = computed(() => calculated.value.reduce((sum, leg) => sum + leg.fuelUsed, 0))
 const totalFuel = computed(() => calculateFuelRequired(tripFuel.value, state.value.additionalFuel))
-const lastFuel = computed(() => calculated.value.at(-1)?.fuelRemaining ?? state.value.startingFuel)
+const lastFuel = computed(() => calculateFuelRemaining(state.value.startingFuel, totalFuel.value))
 const draggedWaypointIndex = ref(null)
 const dragOverWaypointIndex = ref(null)
 
