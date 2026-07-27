@@ -217,17 +217,17 @@ input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-ou
 .wb-summary em{color:#6e828b;font-size:9px}
 .wb-saved-note{margin:0;color:#6b7f88;font-size:11px}
 .wb-table{width:100%;border-collapse:collapse;table-layout:fixed}
-.wb-table th,.wb-table td{height:52px;border-right:1px solid #c3cfd3;border-bottom:1px solid #c3cfd3}
-.wb-table thead th{height:46px;background:#173c50;color:#fff;font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+.wb-table th,.wb-table td{height:44px;border-right:1px solid #c3cfd3;border-bottom:1px solid #c3cfd3}
+.wb-table thead th{height:42px;background:#173c50;color:#fff;font-size:11px;letter-spacing:.1em;text-transform:uppercase}
 .wb-table thead th:first-child{width:42%}
 .wb-table thead th small{display:block;margin-top:2px;color:#b9d0d8;font-size:9px;font-weight:500;letter-spacing:.04em;text-transform:none}
-.wb-table tbody th{padding:8px 18px;background:#f7faf9;color:#244556;text-align:left;font-size:13px}
+.wb-table tbody th{padding:6px 16px;background:#f7faf9;color:#244556;text-align:left;font-size:12px}
 .wb-table tbody td{background:#fff;text-align:center}
-.wb-table input{width:calc(100% - 14px);height:37px;border:1px solid #ded9c8;border-radius:4px;outline:0;background:#faf7ec;padding:7px;text-align:center;color:#1d3340;font-weight:750}
+.wb-table input{width:calc(100% - 14px);height:32px;border:1px solid #ded9c8;border-radius:4px;outline:0;background:#faf7ec;padding:5px 7px;text-align:center;color:#1d3340;font-weight:750}
 .wb-table input:focus{border-color:#66a8bc;box-shadow:0 0 0 2px #66a8bc33;background:#fff}
 .wb-table th label{display:flex;align-items:center;justify-content:space-between;gap:12px}
 .wb-table th label span{display:inline-flex;align-items:center;gap:6px;color:#67808a;font-size:10px;font-weight:700;white-space:nowrap}
-.wb-table th label input{width:70px;height:32px}
+.wb-table th label input{width:70px;height:28px}
 .wb-calculated{background:var(--sky)!important;color:#125a71;font-weight:850}
 .wb-deduction{background:#fff7ed!important;color:#a14c29;font-weight:850}
 .wb-total-row th,.wb-major-row th{font-weight:900}
@@ -253,21 +253,47 @@ input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-ou
 }
 
 @media print{
+  @page{size:A4 landscape;margin:5mm}
+  html,body{width:auto!important;min-width:0!important;background:#fff!important}
+  body:has(.wb-shell){overflow:visible!important}
+  .wb-shell{min-height:0!important;color:#111;-webkit-print-color-adjust:exact;print-color-adjust:exact}
   .wb-shell .topbar,.wb-shell footer,.wb-shell .wb-meta-card .button,.wb-shell .wb-saved-note{display:none!important}
-  .wb-main{width:100%!important}
-  .wb-hero{display:block!important;padding:0 0 5mm!important}
+  .wb-main{width:100%!important;max-width:none!important;margin:0!important}
+  .wb-hero{display:block!important;padding:0 0 2mm!important}
+  .wb-hero>div:first-child{display:block!important}
   .wb-hero .eyebrow,.wb-hero .subtitle{display:none!important}
-  .wb-hero h1{font-size:20pt}
-  .wb-meta-card{grid-template-columns:1fr 1fr!important;padding:3mm!important;margin-bottom:3mm;border-radius:0;box-shadow:none}
+  .wb-hero h1{font-size:16pt!important;line-height:1!important}
+  .wb-meta-card{grid-template-columns:1.35fr .65fr!important;gap:5mm!important;padding:1.5mm 3mm!important;margin:0 0 2mm!important;border:1px solid #777!important;border-radius:0!important;box-shadow:none!important}
+  .wb-meta-card label>span{margin-bottom:.3mm!important;font-size:5.5pt!important}
+  .wb-meta-card input{padding:.4mm 0!important;font-size:7pt!important}
   .wb-arm-help{display:none}
-  .wb-summary{margin:0 0 3mm;grid-template-columns:repeat(5,1fr)!important}
-  .wb-summary article{padding:2mm!important}
-  .wb-summary strong{font-size:12pt}
-  .wb-workspace{border-radius:0}
-  .wb-workspace .section-heading{padding:2mm 0!important}
+  .wb-summary{margin:0 0 2mm!important;grid-template-columns:repeat(5,1fr)!important;border-radius:0!important}
+  .wb-summary article{grid-column:auto!important;padding:1mm 2mm!important}
+  .wb-summary span{font-size:5.2pt!important}
+  .wb-summary strong{margin:.6mm .8mm 0 0!important;font-size:10pt!important}
+  .wb-summary em{font-size:5pt!important}
+  .wb-workspace{border:1px solid #777!important;border-radius:0!important;box-shadow:none!important;overflow:visible!important;break-inside:auto;page-break-inside:auto}
+  .wb-workspace .section-heading{padding:1mm 2mm!important}
+  .wb-workspace .section-heading .eyebrow{display:none!important}
+  .wb-workspace .section-heading h2{font-size:9pt!important}
+  .wb-workspace .table-wrap{overflow:visible!important;border:0!important}
   .wb-table{min-width:0!important}
-  .wb-table th,.wb-table td{height:8mm!important;font-size:8pt!important}
-  .wb-table input{height:6mm!important;font-size:8pt!important;background:transparent!important}
-  .wb-table th label input{width:15mm!important}
-  .wb-formula{display:flex!important;margin:3mm 0!important;padding:3mm!important}
+  .wb-table thead{display:table-header-group}
+  .wb-table tr{break-inside:avoid;page-break-inside:avoid}
+  .wb-table th,.wb-table td{height:6.6mm!important;padding:.4mm 2mm!important;font-size:7pt!important;line-height:1!important;border-color:#888!important}
+  .wb-table thead th{height:6.8mm!important;background:#242424!important;color:#fff!important;font-size:6.2pt!important}
+  .wb-table thead th small{margin-top:.3mm!important;font-size:4.7pt!important}
+  .wb-table input{width:calc(100% - 2mm)!important;height:5mm!important;padding:.3mm!important;border-color:transparent!important;border-radius:0!important;background:transparent!important;font-size:7pt!important}
+  .wb-table th label span{gap:1mm!important;font-size:5.5pt!important}
+  .wb-table th label input{width:15mm!important;height:4.7mm!important;border-bottom:1px solid #777!important}
+  .wb-calculated,.wb-cg-value{background:#ededed!important;color:#000!important}
+  .wb-deduction{background:#f5f5f5!important;color:#000!important}
+  .wb-cg-value{font-size:10pt!important}
+  .wb-total-row td,.wb-total-row th{border-top:1px solid #333!important}
+  .wb-major-row td,.wb-major-row th{border-top:1.5px solid #111!important;border-bottom:1.5px solid #111!important}
+  .wb-formula{display:block!important;margin:2mm 0 0!important;padding:2mm 3mm!important;border-radius:0!important;break-inside:avoid;page-break-inside:avoid}
+  .wb-formula .eyebrow{display:none!important}
+  .wb-formula h2{display:inline;margin-right:3mm!important;font-size:8pt!important}
+  .wb-formula p{display:inline;margin:0!important;font-size:6pt!important;line-height:1.25!important}
+  .wb-formula p:last-child{display:block;margin-top:.8mm!important}
 }
